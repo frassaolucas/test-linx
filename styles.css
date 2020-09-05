@@ -272,16 +272,16 @@ footer p {
   margin: 6.4em auto 0;
 }
 
-.home article.share div.share-content {
+.home article.share div.share__content {
   padding: 0 1.6rem;
 }
 
-.home article.share div.share-content > p {
+.home article.share div.share__content > p {
   margin-bottom: 2.4em;
   text-align: center;
 }
 
-.home main article.share form > div + div {
+.home main article.share form div.input-group div + div {
   margin-top: 2em;
 }
 
@@ -313,6 +313,16 @@ footer p {
   }
 
   .home main article.algorithm form {
+    margin-top: 0;
+  }
+
+  .home main article.share form div.input-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+
+  .home main article.share form div.input-group div + div {
     margin-top: 0;
   }
 }

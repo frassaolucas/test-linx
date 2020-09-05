@@ -147,7 +147,10 @@ footer p {
 
 /** product card */
 .product-card {
+  max-width: 40rem;
+  width: 100%;
   display: flex;
+  margin: 0 auto;
 }
 
 .product-card + .product-card {
@@ -166,7 +169,18 @@ footer p {
 }
 
 .product-card .product-card__name {
+  margin-bottom: 1.2em;
   font-size: 1.4rem;
+}
+
+.product-card .product-card__description {
+  display: none;
+}
+
+.product-card .product-card__description,
+.product-card .product-card__full-price,
+.product-card .product-card__discount-price {
+  margin-bottom: 0.8rem;
 }
 
 .product-card .product-card__discount-price {
@@ -177,6 +191,7 @@ footer p {
 .product-card .btn {
   width: 100%;
   height: 3rem;
+  margin-top: 1.2rem;
 }
 
 /** page */
@@ -196,7 +211,7 @@ footer p {
   grid-template-columns: 1fr max-content 1fr;
   gap: 1.5rem;
   align-items: center;
-  margin-bottom: 2.4rem;
+  margin-bottom: 2.4em;
   font-size: 1.8rem;
   text-align: center;
 }
@@ -218,39 +233,43 @@ footer p {
 }
 
 .home main article.algorithm h2 {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.6em;
   text-align: left;
 }
 
 .home main article.algorithm > div.algorithm__content p + p {
-  margin-top: 1.6rem;
+  margin-top: 1.6em;
 }
 
 .home main article.algorithm form {
-  margin-top: 3rem;
+  margin-top: 3em;
 }
 
 .home main article.algorithm form > div + div {
-  margin-top: 2rem;
+  margin-top: 2em;
 }
 
 .home main article.algorithm form div.input-radio label {
-  margin-right: 4rem;
+  margin-right: 4em;
 }
 
 .home main article.algorithm form button {
   width: 100%;
   height: 4rem;
-  margin-top: 2rem;
+  margin-top: 2em;
 }
 
 .home main article.product-selection div.product-selection__content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   padding: 0 1.6em;
 }
 
-.home main article.product-selection div.btn {
+.home main article.product-selection > div.btn {
+  max-width: 26rem;
   height: 4rem;
-  margin-top: 6.4rem;
+  margin: 6.4em auto 0;
 }
 
 .home article.share div.share-content {
@@ -258,16 +277,62 @@ footer p {
 }
 
 .home article.share div.share-content > p {
-  margin-bottom: 2.4rem;
+  margin-bottom: 2.4em;
   text-align: center;
 }
 
 .home main article.share form > div + div {
-  margin-top: 2rem;
+  margin-top: 2em;
 }
 
 .home main article.share form button {
   width: 26rem;
   height: 4rem;
-  margin: 2rem auto 0;
+  margin: 2em auto 0;
+}
+
+/** media query */
+
+@media (min-width: 48em) {
+  header {
+    text-align: center;
+  }
+
+  nav {
+    margin: -13em auto 11em;
+  }
+
+  nav ul {
+    grid-template-columns: repeat(4, 16rem);
+  }
+
+  .home main article.algorithm > div.algorithm__content {
+    display: grid;
+    grid-template-columns: 1fr 34rem;
+    gap: 6rem;
+  }
+
+  .home main article.algorithm form {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 57.5em) {
+  .product-card {
+    max-width: 20rem;
+    flex-direction: column;
+  }
+
+  .product-card + .product-card {
+    margin-top: 0;
+  }
+
+  .product-card img {
+    margin-bottom: 1.6rem;
+    margin-right: 0;
+  }
+
+  .product-card .product-card__description {
+    display: block;
+  }
 }

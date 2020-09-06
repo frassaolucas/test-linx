@@ -1,6 +1,3 @@
-let url =
-  "https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=1";
-
 async function api(apiURL) {
   try {
     const response = await fetch(apiURL);
@@ -12,4 +9,4 @@ async function api(apiURL) {
   }
 }
 
-export { url, api };
+export { api };

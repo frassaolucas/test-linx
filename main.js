@@ -8,8 +8,6 @@ async function api(apiURL) {
     const response = await fetch(apiURL);
     const { nextPage, products } = await response.json();
 
-    console.log(apiURL);
-
     return { nextPage, products };
   } catch (err) {
     console.log(err);
@@ -20,6 +18,25 @@ function getProducts(products) {
   products.map((product) => {
     buildProductCard(product);
   });
+}
+
+async function loadMore(apiURL) {
+  if (
+    apiURL ===
+    "https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=1"
+  ) {
+    apiURL =
+      "https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=2";
+  }
+
+  const { nextPage, products } = await api(apiURL);
+
+  productContainer.innerHTML = "";
+  productList.push(...products);
+
+  getProducts(productList);
+
+  url = `http://${nextPage}`;
 }
 
 function buildProductCard(productInfo) {
@@ -94,6 +111,11 @@ async function start() {
   productList.push(...products);
 
   getProducts(productList);
+
+  const buttonLoadMore = document.getElementById("loadMore");
+  buttonLoadMore.addEventListener("click", async () => {
+    loadMore(url);
+  });
 }
 
 start();

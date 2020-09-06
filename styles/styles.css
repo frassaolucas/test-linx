@@ -158,6 +158,11 @@ footer p {
   margin-bottom: 0.5rem;
 }
 
+/** error */
+.error {
+  color: red;
+}
+
 /** product card */
 .product-card {
   max-width: 40rem;
@@ -288,6 +293,7 @@ footer p {
   max-width: 26rem;
   height: 4rem;
   margin: 6.4em auto 0;
+  font-size: 1.6rem;
 }
 
 .home article.share div.share__content {

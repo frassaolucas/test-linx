@@ -1,14 +1,15 @@
 /** general */
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("assets/fonts/helveticaneue/HelveticaNeue\ Light.ttf")
+  src: url("../assets/fonts/helveticaneue/HelveticaNeue\ Light.ttf")
     format("truetype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("assets/fonts/helveticaneue/HelveticaNeueBd.ttf") format("truetype");
+  src: url("../assets/fonts/helveticaneue/HelveticaNeueBd.ttf")
+    format("truetype");
   font-weight: bold;
 }
 
@@ -58,6 +59,7 @@ button,
   border-radius: 0.4rem;
   font-size: 1.6rem;
   text-align: center;
+  cursor: pointer;
 }
 
 input[type="text"],
@@ -158,6 +160,8 @@ footer p {
 }
 
 .product-card img {
+  width: 100%;
+  height: auto;
   margin-right: 2.4rem;
 }
 
@@ -328,13 +332,17 @@ footer p {
 }
 
 @media (min-width: 57.5em) {
+  .home main article.product-selection div.product-selection__content {
+    margin-top: -3rem;
+  }
+
   .product-card {
     max-width: 20rem;
     flex-direction: column;
   }
 
-  .product-card + .product-card {
-    margin-top: 0;
+  .product-card {
+    margin-top: 3rem;
   }
 
   .product-card img {

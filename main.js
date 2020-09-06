@@ -95,6 +95,7 @@ function appendChildren(parent, children) {
   });
 }
 
+// format currency
 function formatCurrency(num) {
   const numberFormatted = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -105,17 +106,118 @@ function formatCurrency(num) {
   return numberFormatted;
 }
 
+function validateField(field) {
+  function verifyErrors() {
+    let foundError = false;
+
+    for (let error in field.validity) {
+      if (field.validity[error] && !field.validity.valid) {
+        foundError = error;
+      }
+    }
+
+    return foundError;
+  }
+
+  function customMessage(typeError) {
+    const messages = {
+      text: {
+        valueMissing: "Por favor, preencha este campo",
+      },
+      email: {
+        valueMissing: "E-mail é obrigatório",
+        typeMissmatch: "Por favor, preencha um e-mail válido",
+      },
+      number: {
+        valueMissing: "Por favor, preencha este campo",
+      },
+    };
+
+    return messages[field.type][typeError];
+  }
+
+  function setCustomMessage(message) {
+    const spanError = field.parentNode.querySelector("span.error");
+
+    if (message) {
+      spanError.classList.add("active");
+      spanError.innerHTML = message;
+    } else {
+      spanError.classList.remove("active");
+      spanError.innerHTML = "";
+    }
+  }
+
+  return function () {
+    const error = verifyErrors();
+
+    if (error) {
+      const message = customMessage(error);
+
+      field.style.borderColor = "red";
+      setCustomMessage(message);
+    } else {
+      const colorGray = getComputedStyle(
+        document.documentElement
+      ).getPropertyValue("--dark-gray");
+
+      field.style.borderColor = colorGray;
+      setCustomMessage();
+    }
+  };
+}
+
+// custom input validation
+function customValidation(event) {
+  const field = event.target;
+  const validation = validateField(field);
+
+  validation();
+}
+
+function handleInvalidInput() {
+  const fields = document.querySelectorAll("[required]");
+
+  for (let field of fields) {
+    field.addEventListener("invalid", (event) => {
+      event.preventDefault();
+
+      customValidation(event);
+    });
+    field.addEventListener("blur", customValidation);
+  }
+}
+
+// form submit
+function handleShareForm(event) {
+  event.preventDefault();
+}
+
+function handleAgorithmForm(event) {
+  event.preventDefault();
+}
+
 async function start() {
+  const buttonLoadMore = document.getElementById("loadMore");
+
+  const algorithmForm = document.getElementById("algorithmForm");
+  const shareForm = document.getElementById("shareForm");
+
+  // load product card list
   const { products } = await api(url);
 
   productList.push(...products);
 
   getProducts(productList);
 
-  const buttonLoadMore = document.getElementById("loadMore");
   buttonLoadMore.addEventListener("click", async () => {
     loadMore(url);
   });
+
+  // input validation & submit
+  handleInvalidInput();
+  algorithmForm.addEventListener("submit", (event) => handleShareForm(event));
+  shareForm.addEventListener("submit", (event) => handleShareForm(event));
 }
 
 start();

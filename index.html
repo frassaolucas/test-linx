@@ -25,16 +25,16 @@
     <nav>
       <ul>
         <li>
-          <a href="#">Conheça a Linx</a>
+          <a href="#" class="btn">Conheça a Linx</a>
         </li>
         <li>
-          <a href="#algorithm">Ajude o algorítmo</a>
+          <a href="#algorithm" class="btn">Ajude o algorítmo</a>
         </li>
         <li>
-          <a href="#products">Seus produtos</a>
+          <a href="#products" class="btn">Seus produtos</a>
         </li>
         <li>
-          <a href="#share">Compartilhe</a>
+          <a href="#share" class="btn">Compartilhe</a>
         </li>
       </ul>
     </nav>
@@ -69,31 +69,34 @@
               </p>
             </div>
 
-            <form action="">
+            <form id="algorithmForm">
               <div>
                 <label for="name">Seu nome:</label>
-                <input id="name" type="text" />
+                <input id="name" type="text" required />
+                <span class="error"></span>
               </div>
 
               <div>
                 <label for="email">E-mail:</label>
-                <input id="email" type="email" />
+                <input id="email" type="email" required />
+                <span class="error"></span>
               </div>
 
               <div>
                 <label for="cpf">CPF:</label>
-                <input id="cpf" type="number" />
+                <input id="cpf" type="number" required />
+                <span class="error"></span>
               </div>
 
               <div class="input-radio">
-                <input id="genderMale" type="radio" name="gender" />
+                <input id="genderMale" type="radio" name="gender" checked />
                 <label for="genderMale">Masculino</label>
 
                 <input id="genderFemale" type="radio" name="gender" />
                 <label for="genderFemale">Feminino</label>
               </div>
 
-              <button type="submit">Enviar</button>
+              <button type="submit" class="btn">Enviar</button>
             </form>
           </div>
         </article>
@@ -114,20 +117,22 @@
               Preencha agora!
             </p>
 
-            <form action="">
+            <form id="shareForm">
               <div class="input-group">
                 <div>
                   <label for="friendName">Nome do seu amigo:</label>
-                  <input id="friendName" type="text" />
+                  <input id="friendName" type="text" required />
+                  <span class="error"></span>
                 </div>
 
                 <div>
                   <label for="friendEmail">E-mail dele:</label>
-                  <input id="friendEmail" type="email" />
+                  <input id="friendEmail" type="email" required />
+                  <span class="error"></span>
                 </div>
               </div>
 
-              <button type="submit">Enviar agora</button>
+              <button type="submit" class="btn">Enviar agora</button>
             </form>
           </div>
         </article>

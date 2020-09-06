@@ -48,19 +48,32 @@ input {
   font-family: "Helvetica Neue";
 }
 
-button,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 2em;
   background: var(--white);
   color: var(--gray);
   border: 1px solid var(--dark-gray);
   border-radius: 0.4rem;
-  font-size: 1.6rem;
   text-align: center;
   cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  background: var(--gray);
+  color: var(--white);
 }
 
 input[type="text"],
@@ -120,15 +133,12 @@ nav ul {
   list-style: none;
 }
 
-nav ul li a {
+nav ul li a.btn {
   height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--white);
-  color: var(--gray);
-  border: 1px solid var(--dark-gray);
-  border-radius: 0.4rem;
+  font-size: 1.4rem;
 }
 
 footer {
@@ -161,6 +171,7 @@ footer p {
 }
 
 .product-card img {
+  max-width: 20rem;
   width: 100%;
   height: auto;
   margin-right: 2.4rem;
@@ -197,6 +208,7 @@ footer p {
   width: 100%;
   height: 3rem;
   margin-top: 1.2rem;
+  font-size: 1.6rem;
 }
 
 /** page */
@@ -258,10 +270,11 @@ footer p {
   margin-right: 4em;
 }
 
-.home main article.algorithm form button {
+.home main article.algorithm form .btn {
   width: 100%;
   height: 4rem;
   margin-top: 2em;
+  font-size: 1.6rem;
 }
 
 .home main article.product-selection div.product-selection__content {
@@ -290,10 +303,11 @@ footer p {
   margin-top: 2em;
 }
 
-.home main article.share form button {
+.home main article.share form button.btn {
   width: 26rem;
   height: 4rem;
   margin: 2em auto 0;
+  font-size: 1.6rem;
 }
 
 /** media query */

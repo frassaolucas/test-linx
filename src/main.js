@@ -3,7 +3,7 @@ import { productContainer, buildProductCard } from "./productCard.js";
 import { handleInvalidInput } from "./inputValidation.js";
 
 async function start() {
-  let url =
+  const url =
     "https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=1";
   let productList = [];
 
@@ -13,7 +13,9 @@ async function start() {
   const shareForm = document.getElementById("shareForm");
 
   // load product card list
-  const { products } = await api(url);
+  const { nextPage, products } = await api(url);
+
+  let nextPageURL = `http://${nextPage}`;
 
   function showProducts(products) {
     products.map((product) => {
@@ -22,14 +24,6 @@ async function start() {
   }
 
   async function loadMore(apiURL) {
-    if (
-      apiURL ===
-      "https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=1"
-    ) {
-      apiURL =
-        "https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=2";
-    }
-
     const { nextPage, products } = await api(apiURL);
 
     productContainer.innerHTML = "";
@@ -37,7 +31,7 @@ async function start() {
 
     showProducts(productList);
 
-    url = `http://${nextPage}`;
+    nextPageURL = `http://${nextPage}`;
   }
 
   // form submit
@@ -56,7 +50,7 @@ async function start() {
 
   // load more products
   buttonLoadMore.addEventListener("click", async () => {
-    loadMore(url);
+    loadMore(nextPageURL);
   });
 
   // input validation & submit

@@ -6,6 +6,7 @@ async function start() {
   let url =
     "https://frontend-intern-challenge-api.iurykrieger.now.sh/products?page=1";
   let productList = [];
+
   const buttonLoadMore = document.getElementById("loadMore");
 
   const algorithmForm = document.getElementById("algorithmForm");
@@ -35,11 +36,8 @@ async function start() {
     productList.push(...products);
 
     showProducts(productList);
-    console.log(url);
 
     url = `http://${nextPage}`;
-
-    console.log(url);
   }
 
   // form submit

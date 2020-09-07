@@ -15,7 +15,7 @@ async function start() {
   // load product card list
   const { nextPage, products } = await api(url);
 
-  let nextPageURL = `http://${nextPage}`;
+  let nextPageURL = `https://${nextPage}`;
 
   function showProducts(products) {
     products.map((product) => {
@@ -31,7 +31,7 @@ async function start() {
 
     showProducts(productList);
 
-    nextPageURL = `http://${nextPage}`;
+    nextPageURL = `https://${nextPage}`;
   }
 
   // form submit
